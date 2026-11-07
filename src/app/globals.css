@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 250 247 244;
+  --surface: 255 255 255;
+  --sunken: 244 239 234;
+  --line: 231 221 211;
+  --ink: 43 33 24;
+  --muted: 122 106 92;
+  --accent: 124 74 45;
+  --accent-ink: 255 255 255;
+  color-scheme: light;
+}
+.dark {
+  --bg: 26 19 16;
+  --surface: 35 26 21;
+  --sunken: 44 33 27;
+  --line: 62 47 38;
+  --ink: 241 232 223;
+  --muted: 168 150 134;
+  --accent: 201 138 91;
+  --accent-ink: 28 18 12;
+  color-scheme: dark;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { @apply bg-bg text-ink font-sans antialiased; }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 2px; }
+
+@layer components {
+  .card { @apply rounded-xl border border-line bg-surface; }
+  .btn { @apply inline-flex min-h-[40px] items-center justify-center gap-2 rounded-lg border border-line bg-surface px-4 text-sm font-medium transition hover:bg-sunken disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-primary { @apply border-transparent bg-accent text-accent-ink hover:bg-accent/90; }
+  .btn-danger { @apply border-transparent bg-red-600 text-white hover:bg-red-700; }
+  .btn-sm { @apply min-h-[34px] px-3 text-xs; }
+  .input { @apply min-h-[42px] w-full rounded-lg border border-line bg-surface px-3 text-sm placeholder:text-muted/70; }
+  textarea.input { @apply py-2; }
+  .label { @apply mb-1 block text-xs font-medium text-muted; }
+  .badge { @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium; }
+  .th { @apply px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-muted; }
+  .td { @apply px-3 py-3 text-sm; }
+}
