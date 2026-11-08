@@ -8,6 +8,6 @@ export default async function Templates() {
   return (
     <EditableTable title="Notification templates" hint="Use {{ticket}}, {{subject}} and {{status}} as placeholders. These texts are used for in-app, email and push notifications." table="notification_templates" keyField="key" textKey rows={data ?? []}
       columns={[{ key: 'title', label: 'Title', type: 'text' }, { key: 'body', label: 'Message', type: 'area', width: 'minmax(240px,2fr)' }]}
-      addable={false} canDelete={() => false} />
+      addable={false} deletable={false} />
   );
 }

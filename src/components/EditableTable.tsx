@@ -85,9 +85,9 @@ function EditRow({ table, keyField, textKey, columns, row, deletable, grid }: {
   );
 }
 
-export function EditableTable({ title, hint, table, keyField, textKey = false, columns, rows, addable = true, canDelete = () => true, defaults = {} }: {
+export function EditableTable({ title, hint, table, keyField, textKey = false, columns, rows, addable = true, deletable = true, lockedKeys = [], defaults = {} }: {
   title: string; hint?: string; table: string; keyField: string; textKey?: boolean; columns: Col[]; rows: Row[];
-  addable?: boolean; canDelete?: (row: Row) => boolean; defaults?: Row;
+  addable?: boolean; deletable?: boolean; lockedKeys?: string[]; defaults?: Row;
 }) {
   const router = useRouter();
   const [fresh, setFresh] = useState<Row>(defaults);
@@ -106,7 +106,7 @@ export function EditableTable({ title, hint, table, keyField, textKey = false, c
           {heads.map((h, i) => <span key={i}>{h}</span>)}
         </div>
         {rows.map((r) => (
-          <EditRow key={String(r[keyField])} table={table} keyField={keyField} textKey={textKey} columns={columns} row={r} grid={grid} deletable={canDelete(r)} />
+          <EditRow key={String(r[keyField])} table={table} keyField={keyField} textKey={textKey} columns={columns} row={r} grid={grid} deletable={deletable && !r.is_system && !lockedKeys.includes(String(r[keyField]))} />
         ))}
         {addable && (
           <div className="grid items-center gap-2 bg-sunken/50 p-2" style={{ gridTemplateColumns: grid }}>

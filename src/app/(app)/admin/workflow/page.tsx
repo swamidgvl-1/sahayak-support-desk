@@ -18,7 +18,7 @@ export default async function Workflow() {
           { key: 'kind', label: 'Group', type: 'select', options: ['open', 'active', 'waiting', 'resolved', 'closed'].map((k) => ({ value: k, label: k })) },
           { key: 'sort', label: 'Order', type: 'number' },
         ]}
-        canDelete={(r) => !r.is_system} defaults={{ kind: 'waiting', sort: 9 }} />
+        defaults={{ kind: 'waiting', sort: 9 }} />
 
       <EditableTable title="Priorities & SLA" hint="SLA hours = how long staff have to respond before a ticket is flagged overdue." table="priorities" keyField="key" textKey rows={priorities ?? []}
         columns={[
@@ -27,13 +27,13 @@ export default async function Workflow() {
           { key: 'sort', label: 'Order', type: 'number' },
           { key: 'student_selectable', label: 'Students can pick', type: 'bool', width: '120px' },
         ]}
-        canDelete={(r) => !['low', 'medium', 'high', 'urgent'].includes(r.key)} defaults={{ sla_hours: 24, sort: 5, student_selectable: true }} />
+        lockedKeys={['low', 'medium', 'high', 'urgent']} defaults={{ sla_hours: 24, sort: 5, student_selectable: true }} />
 
       <EditableTable title="System settings" hint='Values are JSON: numbers like 7, true/false, text in quotes like "high", lists like ["mgmu.ac.in"]. Example: set allowed_email_domains to ["yourcollege.edu"] to restrict sign-ups.' table="settings" keyField="key" textKey rows={settings ?? []}
         columns={[
           { key: 'value', label: 'Value (JSON)', type: 'json' },
           { key: 'description', label: 'What it does', type: 'readonly', width: 'minmax(200px,1.4fr)' },
-        ]} addable={false} canDelete={() => false} />
+        ]} addable={false} deletable={false} />
     </div>
   );
 }
