@@ -12,7 +12,7 @@ export default async function LoginPage({ searchParams }: { searchParams: { erro
     <div className="grid min-h-screen place-items-center px-4 py-10">
       <div className="w-full max-w-md">
         <div className="mb-6 text-center">
-          <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-xl bg-accent text-xl font-bold text-accent-ink">{APP_NAME[0]}</div>
+          <div className="mx-auto mb-3 grid h-16 w-16 place-items-center rounded-2xl bg-accent"><img src="/mark.png" alt="" className="h-10 w-10 object-contain" /></div>
           <h1 className="text-2xl font-semibold">{APP_NAME}</h1>
           <p className="text-sm text-muted">{ORG_NAME} · Student &amp; Faculty Support Desk</p>
         </div>

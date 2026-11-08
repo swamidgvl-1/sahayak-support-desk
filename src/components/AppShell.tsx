@@ -62,7 +62,7 @@ export function AppShell({ user, unread, appName, children }: {
     <div className="min-h-screen md:grid md:grid-cols-[232px_1fr]">
       <aside className="sticky top-0 hidden h-screen flex-col border-r border-line bg-surface p-4 md:flex">
         <Link href="/" className="mb-6 flex items-center gap-2 px-2 text-lg font-semibold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent text-accent-ink">{appName[0]}</span>{appName}
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent"><img src="/mark.png" alt="" className="h-5 w-5 object-contain" /></span>{appName}
         </Link>
         {student && (
           <Link href="/student/new" className="btn btn-primary mb-4"><PlusCircle className="h-4 w-4" /> Raise New Ticket</Link>
@@ -89,7 +89,7 @@ export function AppShell({ user, unread, appName, children }: {
       <div className="min-w-0">
         <header className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-surface/95 px-4 py-2 backdrop-blur md:hidden">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <span className="grid h-7 w-7 place-items-center rounded-lg bg-accent text-sm text-accent-ink">{appName[0]}</span>{appName}
+            <span className="grid h-7 w-7 place-items-center rounded-lg bg-accent"><img src="/mark.png" alt="" className="h-4 w-4 object-contain" /></span>{appName}
           </Link>
           <ThemeToggle />
         </header>
